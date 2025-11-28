@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import 'package:talkbot_pos/inventario_screen.dart';
+import 'package:talkbot_pos/pos_screen.dart';
+import 'package:talkbot_pos/reportes_screen.dart';
 import 'home_screen.dart';
 
 class DashboardScreen extends StatefulWidget
@@ -32,9 +34,21 @@ class _DashboardScreenState extends State<DashboardScreen>
           });
         },
       ),
-      const PantallaVenta(), // Índice 1: POS (Tu pantalla de ventas)
-      const PantallaReportesPlaceholder(), // Índice 2: Reportes
-      const Center(child: Text("Inventarios (Próximamente)")), // Índice 3
+      PantallaPosMinimalista
+      (
+        onSalir: ()
+        {
+          setState
+          (()
+          {
+            _selectedIndex = 0;
+          }
+          );
+        }
+      ), // Índice 1: POS
+
+      const PantallaReportes(), // Índice 2: Reportes
+      const PantallaInventario(), // Índice 3
     ];
   }
 

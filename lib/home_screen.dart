@@ -120,7 +120,6 @@ class _MenuCard extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
-                // Corrección del color que me pediste antes:
                 color: (item['color'] as Color).withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
