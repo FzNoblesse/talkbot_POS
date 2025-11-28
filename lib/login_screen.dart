@@ -27,10 +27,8 @@ class _LoginScreenState extends State<LoginScreen>
 
     String user = _userController.text.trim();
     String pass = _passController.text.trim();
-
-    // Consultamos la base de datos
+    
     var usuarioEncontrado = await DatabaseHelper().login(user, pass);
-
     setState
     (()
     {
@@ -48,7 +46,6 @@ class _LoginScreenState extends State<LoginScreen>
     }
     else
     {
-      // SI ES INCORRECTO
       setState(()
       {
         _errorMessage = "Usuario o contraseña incorrectos";
@@ -86,8 +83,7 @@ class _LoginScreenState extends State<LoginScreen>
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 30),
-
-                // CAMPO USUARIO
+                
                 TextField
                 (
                   controller: _userController,
@@ -99,8 +95,7 @@ class _LoginScreenState extends State<LoginScreen>
                   ),
                 ),
                 const SizedBox(height: 15),
-
-                // CAMPO PASSWORD
+                
                 TextField
                 (
                   controller: _passController,
@@ -113,7 +108,6 @@ class _LoginScreenState extends State<LoginScreen>
                   ),
                 ),
                 
-                // MENSAJE DE ERROR
                 if (_errorMessage.isNotEmpty)
                   Padding
                   (
@@ -122,8 +116,7 @@ class _LoginScreenState extends State<LoginScreen>
                   ),
 
                 const SizedBox(height: 30),
-
-                // BOTÓN ENTRAR
+                
                 SizedBox
                 (
                   width: double.infinity,
