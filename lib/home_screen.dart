@@ -7,7 +7,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // DEFINIMOS EL MENÚ
     final List<Map<String, dynamic>> menuItems = [
       {
         "titulo": "Iniciar Venta",
@@ -67,17 +66,12 @@ class HomeScreen extends StatelessWidget {
                 itemCount: menuItems.length,
                 itemBuilder: (context, index) {
                   final item = menuItems[index];
-                  
-                  // Creamos la tarjeta y le decimos QUÉ HACER al dar click
                   return _MenuCard(
                     item: item,
-                    // Esta es la acción que se ejecuta al tocar la tarjeta:
                     onTap: () {
                       if (item.containsKey('ruta')) {
-                        // Si tiene ruta, usamos el control remoto para cambiar pestaña
                         onCambiarPestana(item['ruta']);
                       } else {
-                        // Si no, solo mostramos un mensaje
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text("Opción: ${item['titulo']}")),
                         );
@@ -94,7 +88,6 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
-// Ahora recibe el 'onTap' desde arriba para saber qué hacer
 class _MenuCard extends StatelessWidget {
   final Map<String, dynamic> item;
   final VoidCallback onTap;
@@ -113,7 +106,7 @@ class _MenuCard extends StatelessWidget {
       surfaceTintColor: Colors.white,
       child: InkWell(
         borderRadius: BorderRadius.circular(15),
-        onTap: onTap, // <--- Aquí conectamos el click con la acción que nos mandaron
+        onTap: onTap,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
